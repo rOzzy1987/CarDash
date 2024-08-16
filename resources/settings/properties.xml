@@ -1,0 +1,170 @@
+<resources>
+
+    <properties>
+        <property id="theme" type="number">1</property>
+        <property id="redlineColor" type="number">0xFF0000</property>
+        <property id="spdFont" type="number">0</property>
+        <property id="odoFont" type="number">0</property>
+        <property id="odoW" type="number">15</property>
+        <property id="odoH" type="number">20</property>
+        <property id="odoP" type="number">42</property>
+        <property id="spdMax" type="number">43</property>
+        <property id="spdRedline" type="number">28</property>
+        <property id="cadMax" type="number">100</property>
+        <property id="cadRedline" type="number">80</property>
+        <property id="pointerColor" type="number">0xFF0000</property>
+        <property id="pointerCapColor" type="number">0x555555</property>
+        <property id="isDebug" type="boolean">false</property>
+    </properties>
+     <strings>
+        <string id="redlineColor">Redline color</string>
+        <string id="pointerColor">Needle color</string>
+        <string id="pointerCapColor">Needle cap color</string>
+        <string id="spdFont">Speedometer font</string>
+        <string id="odoFont">Odometer font</string>
+        <string id="odoW">Odometer character width</string>
+        <string id="odoH">Odometer character height</string>
+        <string id="odoP">Odometer position</string>
+        <string id="fontXS">XS</string>
+        <string id="fontS">S</string>
+        <string id="fontM">M</string>
+        <string id="fontL">L</string>
+        <string id="fontXL">XL</string>
+        <string id="theme">Theme</string>
+        <string id="themeLight">Light</string>
+        <string id="themeDark">Dark</string>
+        <string id="spdMax">Speed MAX</string>
+        <string id="spdRedline">Speed redline</string>
+        <string id="cadMax">Cadence MAX</string>
+        <string id="cadRedline">Cadence redline</string>
+        <string id="spdMaxError">Value must be between 0 and 80</string>
+        <string id="spdRedlineError">Value must be between 0 and 80</string>
+        <string id="cadMaxError">Value must be between 0 and 100</string>
+        <string id="cadRedlineError">Value must be between 0 and 100</string>
+        <string id="odoWError">Value must be between 10 and 100</string>
+        <string id="odoHError">Value must be between 10 and 100</string>
+        <string id="odoPError">Value must be between 0 and 64</string>
+        <string id="isDebug">Debug mode</string>
+        
+        <string id="white">White</string>
+        <string id="ltGray">Light gray</string>
+        <string id="dkGray">Dark gray</string>
+        <string id="black">Black</string>
+        <string id="red">Red</string>
+        <string id="dkRed">Dark red</string>
+        <string id="orange">Orange</string>
+        <string id="yellow">Yellow</string>
+        <string id="green">Green</string>
+        <string id="dkGreen">Dark green</string>
+        <string id="blue">Blue</string>
+        <string id="dkBlue">Dark blue</string>
+        <string id="purple">Purple</string>
+        <string id="pink">Pink</string>
+        <string id="none">None</string>
+    </strings>
+    <settings>
+        <setting propertyKey="@Properties.theme" title="@Strings.theme">
+            <settingConfig type="list">
+                <listEntry value="0x0">@Strings.themeLight</listEntry>
+                <listEntry value="0x1">@Strings.themeDark</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.redlineColor" title="@Strings.redlineColor">
+            <settingConfig type="list">
+                <listEntry value="0xFFFFFF">@Strings.white</listEntry>
+                <listEntry value="0xAAAAAA">@Strings.ltGray</listEntry>
+                <listEntry value="0x555555">@Strings.dkGray</listEntry>
+                <listEntry value="0x000000">@Strings.black</listEntry>
+                <listEntry value="0xFF0000">@Strings.red</listEntry>
+                <listEntry value="0xAA0000">@Strings.dkRed</listEntry>
+                <listEntry value="0xFF5500">@Strings.orange</listEntry>
+                <listEntry value="0xFFAA00">@Strings.yellow</listEntry>
+                <listEntry value="0x00FF00">@Strings.green</listEntry>
+                <listEntry value="0x00AA00">@Strings.dkGreen</listEntry>
+                <listEntry value="0x00AAFF">@Strings.blue</listEntry>
+                <listEntry value="0x0000FF">@Strings.dkBlue</listEntry>
+                <listEntry value="0xAA00FF">@Strings.purple</listEntry>
+                <listEntry value="0xFF00FF">@Strings.pink</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.pointerColor" title="@Strings.pointerColor">
+            <settingConfig type="list">
+                <listEntry value="0xFFFFFF">@Strings.white</listEntry>
+                <listEntry value="0xAAAAAA">@Strings.ltGray</listEntry>
+                <listEntry value="0x555555">@Strings.dkGray</listEntry>
+                <listEntry value="0x000000">@Strings.black</listEntry>
+                <listEntry value="0xFF0000">@Strings.red</listEntry>
+                <listEntry value="0xAA0000">@Strings.dkRed</listEntry>
+                <listEntry value="0xFF5500">@Strings.orange</listEntry>
+                <listEntry value="0xFFAA00">@Strings.yellow</listEntry>
+                <listEntry value="0x00FF00">@Strings.green</listEntry>
+                <listEntry value="0x00AA00">@Strings.dkGreen</listEntry>
+                <listEntry value="0x00AAFF">@Strings.blue</listEntry>
+                <listEntry value="0x0000FF">@Strings.dkBlue</listEntry>
+                <listEntry value="0xAA00FF">@Strings.purple</listEntry>
+                <listEntry value="0xFF00FF">@Strings.pink</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.pointerCapColor" title="@Strings.pointerCapColor">
+            <settingConfig type="list">
+                <listEntry value="0xFFFFFF">@Strings.white</listEntry>
+                <listEntry value="0xAAAAAA">@Strings.ltGray</listEntry>
+                <listEntry value="0x555555">@Strings.dkGray</listEntry>
+                <listEntry value="0x000000">@Strings.black</listEntry>
+                <listEntry value="0xFF0000">@Strings.red</listEntry>
+                <listEntry value="0xAA0000">@Strings.dkRed</listEntry>
+                <listEntry value="0xFF5500">@Strings.orange</listEntry>
+                <listEntry value="0xFFAA00">@Strings.yellow</listEntry>
+                <listEntry value="0x00FF00">@Strings.green</listEntry>
+                <listEntry value="0x00AA00">@Strings.dkGreen</listEntry>
+                <listEntry value="0x00AAFF">@Strings.blue</listEntry>
+                <listEntry value="0x0000FF">@Strings.dkBlue</listEntry>
+                <listEntry value="0xAA00FF">@Strings.purple</listEntry>
+                <listEntry value="0xFF00FF">@Strings.pink</listEntry>
+                <listEntry value="-1">@Strings.none</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.spdFont" title="@Strings.spdFont">
+            <settingConfig type="list">
+                <listEntry value="9" >@Strings.fontXS</listEntry>
+                <listEntry value="10">@Strings.fontS</listEntry>
+                <listEntry value="11">@Strings.fontM</listEntry>
+                <listEntry value="12">@Strings.fontL</listEntry>
+                <listEntry value="13">@Strings.fontXL</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.odoFont" title="@Strings.odoFont">
+            <settingConfig type="list">
+                <listEntry value="9" >@Strings.fontXS</listEntry>
+                <listEntry value="10">@Strings.fontS</listEntry>
+                <listEntry value="11">@Strings.fontM</listEntry>
+            </settingConfig>
+        </setting>
+
+        <setting propertyKey="@Properties.spdMax" title="@Strings.spdMax">
+            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.spdMaxError"/>
+        </setting>
+        <setting propertyKey="@Properties.spdRedline" title="@Strings.spdRedline">
+            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.spdRedlineError"/>
+        </setting>
+        <setting propertyKey="@Properties.cadMax" title="@Strings.cadMax">
+            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.cadMaxError"/>
+        </setting>
+        <setting propertyKey="@Properties.cadRedline" title="@Strings.cadRedline">
+            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.cadRedlineError"/>
+        </setting>
+        <setting propertyKey="@Properties.odoW" title="@Strings.odoW">
+            <settingConfig type="numeric" min="10" max="100" errorMessage="@Strings.odoWError"/>
+        </setting>
+        <setting propertyKey="@Properties.odoH" title="@Strings.odoH">
+            <settingConfig type="numeric" min="10" max="100" errorMessage="@Strings.odoHError"/>
+        </setting>
+        <setting propertyKey="@Properties.odoP" title="@Strings.odoP">
+            <settingConfig type="numeric" min="0" max="64" errorMessage="@Strings.odoPError"/>
+        </setting>
+        
+        <setting propertyKey="@Properties.isDebug" title="@Strings.isDebug">
+            <settingConfig type="boolean"/>
+        </setting>
+    </settings>
+</resources>
