@@ -1,4 +1,6 @@
 # CarDash
+![screenshot](https://github.com/rOzzy1987/CarDash/blob/main/resources/drawables/shot.png?raw=true)
+
 A simple cycling data field for Garmin ConnectIQ compatible devices
 
 ## Introduction
@@ -14,6 +16,7 @@ Settings are available for the data field in the ConnectIQ app such as:
 - Maximum value and redline start for speed gauge
 - Maximum value and redline start for cadence gauge
 - "Redline" color
+- Gauge needle colors
 - Light or dark theme
 - Speedometer label font size
 - Odometer font size
@@ -21,5 +24,7 @@ Settings are available for the data field in the ConnectIQ app such as:
 
 ## Footnote
 CarDash is available for free in the ConnectIQ store, and open source as you see.
+
 If you want to support me you can do so [here](https://revolut.me/mihlywer)
+
 Thank you!
