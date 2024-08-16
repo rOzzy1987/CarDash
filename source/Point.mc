@@ -21,9 +21,6 @@ class Point {
     public function Mul(m as Lang.Numeric) as Point {
         return new Point(X * m, Y * m);
     }
-    public function Copy() as Point {
-        return new Point(X, Y);
-    }
 
     public function Rotate(center as Point, angle as Lang.Numeric) as Point {
         var t = Sub(center);

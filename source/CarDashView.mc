@@ -57,6 +57,8 @@ class CarDashView extends WatchUi.DataField {
         _spdGauge.RedlineWidth = th.RlWidth * scale;
         _spdGauge.BorderWidth = 0;
         _spdGauge.CapSize = 30 * scale;
+        _spdGauge.TickUnits = 5;
+        _spdGauge.SmallTickUnits = 1;
 
         _spdGauge.ValueFrom = 0f;
         _spdGauge.ValueTo = Application.Properties.getValue("spdMax").toFloat();
@@ -107,26 +109,20 @@ class CarDashView extends WatchUi.DataField {
 
     function compute(info as Activity.Info) as Void {
 
-        if(info has :currentSpeed){
-            if(info.currentSpeed != null){
-                _dSpeed = info.currentSpeed.toFloat();
-            }
+        if(info has :currentSpeed && info.currentSpeed != null) {
+            _dSpeed = info.currentSpeed.toFloat();
         } else {
             _dSpeed = 0.0f;
         }
 
-        if(info has :elapsedDistance){
-            if(info.elapsedDistance != null){
-                _dDist = info.elapsedDistance.toFloat();
-            }
+        if(info has :elapsedDistance && info.elapsedDistance != null) {
+            _dDist = info.elapsedDistance.toFloat();
         } else {
             _dDist = 0.0f;
         }
 
-        if(info has :currentCadence){
-            if(info.currentCadence != null){
-                _dCad = (info.currentCadence).toFloat();
-            }
+        if(info has :currentCadence && info.currentCadence != null) {
+            _dCad = (info.currentCadence).toFloat();
         } else {
             _dCad = 0.0f;
         }
