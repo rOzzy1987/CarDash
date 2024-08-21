@@ -5,10 +5,15 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class CarDashView extends WatchUi.DataField {
+    const DATA_SRC_HEART_RATE = 0;
+    const DATA_SRC_CADENCE = 1;
+
     // Data related
-    hidden var _dSpeed as Numeric;
-    hidden var _dDist as Numeric;
-    hidden var _dCad as Numeric;
+    private var _dSpeed as Numeric;
+    private var _dDistance as Numeric;
+    private var _dSecondary as Numeric;
+
+    private var _secondaryDataSource as Numeric = DATA_SRC_CADENCE;
 
     // View related
     private var _w = 0;
@@ -24,8 +29,8 @@ class CarDashView extends WatchUi.DataField {
         DataField.initialize();
 
         _dSpeed = 0.0f;
-        _dDist = 0.0f;
-        _dCad = 0.0f;
+        _dDistance = 0.0f;
+        _dSecondary = 0.0f;
 
         Theme.init();
     }
@@ -57,8 +62,8 @@ class CarDashView extends WatchUi.DataField {
         _spdGauge.RedlineWidth = th.RlWidth * scale;
         _spdGauge.BorderWidth = 0;
         _spdGauge.CapSize = 30 * scale;
-        _spdGauge.TickUnits = 5;
-        _spdGauge.SmallTickUnits = 1;
+        _spdGauge.TickUnits = Application.Properties.getValue("spdDiv").toNumber();
+        _spdGauge.SmallTickUnits = _spdGauge.TickUnits / 5;
 
         _spdGauge.ValueFrom = 0f;
         _spdGauge.ValueTo = Application.Properties.getValue("spdMax").toFloat();
@@ -101,10 +106,11 @@ class CarDashView extends WatchUi.DataField {
         _odometer.BorderWidth = 2 * scale;
         _odometer.Font = Application.Properties.getValue("odoFont");
         _odometer.Center = new Point(_w / 2, _h * Application.Properties.getValue("odoP").toNumber() / 64);
-        _odometer.CharacterWidth = Application.Properties.getValue("odoW").toNumber();
-        _odometer.Height = Application.Properties.getValue("odoH").toNumber();
+        _odometer.CharacterWidth = 0;
+        _odometer.Height = 0;
         
         _isDebug = Application.Properties.getValue("isDebug");
+        _secondaryDataSource = Application.Properties.getValue("cadData");
     }
 
     function compute(info as Activity.Info) as Void {
@@ -116,22 +122,36 @@ class CarDashView extends WatchUi.DataField {
         }
 
         if(info has :elapsedDistance && info.elapsedDistance != null) {
-            _dDist = info.elapsedDistance.toFloat();
+            _dDistance = info.elapsedDistance.toFloat();
         } else {
-            _dDist = 0.0f;
+            _dDistance = 0.0f;
         }
-
-        if(info has :currentCadence && info.currentCadence != null) {
-            _dCad = (info.currentCadence).toFloat();
-        } else {
-            _dCad = 0.0f;
+        
+        switch (_secondaryDataSource) {
+            case DATA_SRC_CADENCE:
+                if(info has :currentCadence && info.currentCadence != null) {
+                    _dSecondary = (info.currentCadence).toFloat();
+                } else {
+                    _dSecondary = 0.0f;
+                }
+                break;
+            case DATA_SRC_HEART_RATE:
+                if(info has :heartRate && info.heartRate != null) {
+                    _dSecondary = (info.heartRate).toFloat();
+                } else {
+                    _dSecondary = 0.0f;
+                }
+                break;
+            default: 
+                _dSecondary = 0.0f;
+                break;
         }
 
         if (System.getDeviceSettings().distanceUnits == System.UNIT_METRIC) {
-            _dDist /= 1000f;
+            _dDistance /= 1000f;
             _dSpeed *= Unit.MPS_TO_KPH; 
         } else {
-            _dDist /= Unit.METERS_IN_MILE;
+            _dDistance /= Unit.METERS_IN_MILE;
             _dSpeed *= Unit.MPS_TO_KPH / Unit.KILOMETERS_IN_MILE;
         }
     }
@@ -144,19 +164,22 @@ class CarDashView extends WatchUi.DataField {
         dc.setColor(Graphics.COLOR_TRANSPARENT, th.BgColor);
         dc.clear();
 
-        var utxt = System.getDeviceSettings().distanceUnits == System.UNIT_METRIC
-            ? WatchUi.loadResource(Rez.Strings.Kph)
-            : WatchUi.loadResource(Rez.Strings.Mph);
-        dc.setColor(0x808080, -1);
-        dc.drawText(_w / 2, _h / 4, Graphics.FONT_SYSTEM_XTINY, utxt, Graphics.TEXT_JUSTIFY_CENTER) ;
+
+        if (_spdGauge.Font != -1) {
+            var utxt = System.getDeviceSettings().distanceUnits == System.UNIT_METRIC
+                ? WatchUi.loadResource(Rez.Strings.Kph)
+                : WatchUi.loadResource(Rez.Strings.Mph);
+            dc.setColor(0x808080, -1);
+            dc.drawText(_w / 2, _h / 4, Graphics.FONT_SYSTEM_XTINY, utxt, Graphics.TEXT_JUSTIFY_CENTER) ;
+        }
 
         _spdGauge.draw(dc);
         _rpmGauge.draw(dc);
 
-        _odometer.draw(dc, _dDist);
+        _odometer.draw(dc, _dDistance);
 
         _spdGauge.drawPointer(dc, _dSpeed);
-        _rpmGauge.drawPointer(dc, _dCad);
+        _rpmGauge.drawPointer(dc, _dSecondary);
 
         if (_isDebug) {
             dbgView(dc);
@@ -166,8 +189,9 @@ class CarDashView extends WatchUi.DataField {
     function dbgView(dc as Dc){
         dc.setColor(Graphics.COLOR_GREEN, -1);
         dc.drawText(90, 60, Graphics.FONT_SYSTEM_XTINY, _dSpeed.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(90, 75, Graphics.FONT_SYSTEM_XTINY, _dDist.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(90, 90, Graphics.FONT_SYSTEM_XTINY, _dCad.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(90, 75, Graphics.FONT_SYSTEM_XTINY, _dDistance.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(90, 90, Graphics.FONT_SYSTEM_XTINY, _dSecondary.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(90, 105, Graphics.FONT_SYSTEM_XTINY, _secondaryDataSource == DATA_SRC_CADENCE ? "Cad" : "HR", Graphics.TEXT_JUSTIFY_LEFT);
     }
 
 }

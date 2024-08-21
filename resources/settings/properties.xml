@@ -3,13 +3,13 @@
     <properties>
         <property id="theme" type="number">1</property>
         <property id="redlineColor" type="number">0xFF0000</property>
-        <property id="spdFont" type="number">0</property>
-        <property id="odoFont" type="number">0</property>
-        <property id="odoW" type="number">15</property>
-        <property id="odoH" type="number">20</property>
-        <property id="odoP" type="number">42</property>
+        <property id="spdFont" type="number">11</property>
+        <property id="spdDiv" type="number">5</property>
+        <property id="odoFont" type="number">10</property>
+        <property id="odoP" type="number">41</property>
         <property id="spdMax" type="number">43</property>
         <property id="spdRedline" type="number">28</property>
+        <property id="cadData" type="number">0</property>
         <property id="cadMax" type="number">100</property>
         <property id="cadRedline" type="number">80</property>
         <property id="pointerColor" type="number">0xFF0000</property>
@@ -21,28 +21,19 @@
         <string id="pointerColor">Needle color</string>
         <string id="pointerCapColor">Needle cap color</string>
         <string id="spdFont">Speedometer font</string>
+        <string id="spdDiv">Speedometer divisions</string>
         <string id="odoFont">Odometer font</string>
-        <string id="odoW">Odometer character width</string>
-        <string id="odoH">Odometer character height</string>
         <string id="odoP">Odometer position</string>
-        <string id="fontXS">XS</string>
-        <string id="fontS">S</string>
-        <string id="fontM">M</string>
-        <string id="fontL">L</string>
-        <string id="fontXL">XL</string>
         <string id="theme">Theme</string>
-        <string id="themeLight">Light</string>
-        <string id="themeDark">Dark</string>
         <string id="spdMax">Speed MAX</string>
         <string id="spdRedline">Speed redline</string>
-        <string id="cadMax">Cadence MAX</string>
-        <string id="cadRedline">Cadence redline</string>
+        <string id="cadData">Small gauge data</string>
+        <string id="cadMax">Small gauge MAX</string>
+        <string id="cadRedline">Small gauge redline</string>
         <string id="spdMaxError">Value must be between 0 and 80</string>
         <string id="spdRedlineError">Value must be between 0 and 80</string>
-        <string id="cadMaxError">Value must be between 0 and 100</string>
-        <string id="cadRedlineError">Value must be between 0 and 100</string>
-        <string id="odoWError">Value must be between 10 and 100</string>
-        <string id="odoHError">Value must be between 10 and 100</string>
+        <string id="cadMaxError">Value must be between 0 and 250</string>
+        <string id="cadRedlineError">Value must be between 0 and 250</string>
         <string id="odoPError">Value must be between 0 and 64</string>
         <string id="isDebug">Debug mode</string>
         
@@ -61,6 +52,21 @@
         <string id="purple">Purple</string>
         <string id="pink">Pink</string>
         <string id="none">None</string>
+
+        <string id="themeLight">Light</string>
+        <string id="themeDark">Dark</string>
+
+        <string id="fontXS">XS</string>
+        <string id="fontS">S</string>
+        <string id="fontM">M</string>
+        <string id="fontL">L</string>
+        <string id="fontXL">XL</string>
+        
+        <string id="cadHr">Heart rate</string>
+        <string id="cadCad">Cadence</string>
+
+        <string id="div5">5</string>
+        <string id="div10">10</string>
     </strings>
     <settings>
         <setting propertyKey="@Properties.theme" title="@Strings.theme">
@@ -85,6 +91,7 @@
                 <listEntry value="0x0000FF">@Strings.dkBlue</listEntry>
                 <listEntry value="0xAA00FF">@Strings.purple</listEntry>
                 <listEntry value="0xFF00FF">@Strings.pink</listEntry>
+                <listEntry value="-1">@Strings.none</listEntry>
             </settingConfig>
         </setting>
         <setting propertyKey="@Properties.pointerColor" title="@Strings.pointerColor">
@@ -131,6 +138,13 @@
                 <listEntry value="11">@Strings.fontM</listEntry>
                 <listEntry value="12">@Strings.fontL</listEntry>
                 <listEntry value="13">@Strings.fontXL</listEntry>
+                <listEntry value="-1">@Strings.none</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.spdDiv" title="@Strings.spdDiv">
+            <settingConfig type="list">
+                <listEntry value="5" >@Strings.div5</listEntry>
+                <listEntry value="10">@Strings.div10</listEntry>
             </settingConfig>
         </setting>
         <setting propertyKey="@Properties.odoFont" title="@Strings.odoFont">
@@ -147,17 +161,17 @@
         <setting propertyKey="@Properties.spdRedline" title="@Strings.spdRedline">
             <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.spdRedlineError"/>
         </setting>
+        <setting propertyKey="@Properties.cadData" title="@Strings.cadData">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.cadHr</listEntry>
+                <listEntry value="1">@Strings.cadCad</listEntry>
+            </settingConfig>
+        </setting>
         <setting propertyKey="@Properties.cadMax" title="@Strings.cadMax">
-            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.cadMaxError"/>
+            <settingConfig type="numeric" min="0" max="250" errorMessage="@Strings.cadMaxError"/>
         </setting>
         <setting propertyKey="@Properties.cadRedline" title="@Strings.cadRedline">
-            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.cadRedlineError"/>
-        </setting>
-        <setting propertyKey="@Properties.odoW" title="@Strings.odoW">
-            <settingConfig type="numeric" min="10" max="100" errorMessage="@Strings.odoWError"/>
-        </setting>
-        <setting propertyKey="@Properties.odoH" title="@Strings.odoH">
-            <settingConfig type="numeric" min="10" max="100" errorMessage="@Strings.odoHError"/>
+            <settingConfig type="numeric" min="0" max="250" errorMessage="@Strings.cadRedlineError"/>
         </setting>
         <setting propertyKey="@Properties.odoP" title="@Strings.odoP">
             <settingConfig type="numeric" min="0" max="64" errorMessage="@Strings.odoPError"/>

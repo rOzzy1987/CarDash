@@ -19,42 +19,14 @@ class Odometer {
     public var CharacterCount = 5;
     public var Decimals = 3;
 
-    public function draw2(dc as Dc, value as Lang.Numeric)
-    {
-        var w = (CharacterCount * CharacterWidth) + ((CharacterWidth + 1) * BorderWidth);
-        var o = Center.Sub(new Point(w/2, Height / 2));
-
-        dc.setPenWidth(BorderWidth);
-        dc.setColor(BorderColor, BackgroundColor);
-
-        dc.drawRectangle(o.X, o.Y, w, Height);
-
-        var p = o.Copy();
-        for(var i = 0; i < CharacterCount - 1; i++) {
-            p.X += CharacterWidth + BorderWidth;
-            dc.drawLine(p.X, p.Y, p.X, p.Y + Height);
-        }
-
-        for (var i = 0; i < Decimals; i++) {
-            value = value * 10;
-        }
-
-        var strVal = Math.round(value).format("%.0f").toCharArray();
-        var strs = strVal.size();
-
-        p = o.Add(new Point(w - CharacterWidth / 2, Height / 2));
-        var c = (strs > CharacterCount ? CharacterCount : strs) - 1;
-
-        for (var i = 0; i < CharacterCount && c >= 0; i++, c--) {
-            var isDecimal = c > strs - Decimals;
-            dc.setColor(isDecimal ? DecimalForegroundColor : ForegroundColor, isDecimal ? DecimalBackgroundColor : BackgroundColor);
-            dc.drawText(p.X, p.Y, Font, strVal[c], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            p.X -= CharacterWidth + BorderWidth;
-        }
-    }
-
     public function draw(dc as Dc, value as Lang.Numeric)
     {
+        if (CharacterWidth == 0 || Height == 0) {
+            var s = dc.getTextDimensions("0", Font);
+            CharacterWidth = s[0] + (2 * BorderWidth);
+            Height = s[1] + (2 * BorderWidth);
+        }
+
         var w = (CharacterCount * CharacterWidth) + ((CharacterCount + 1) * BorderWidth);
         var o = Center.Sub(new Point(w/2, Height / 2));
 

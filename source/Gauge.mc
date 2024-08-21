@@ -82,9 +82,11 @@ class Gauge {
         
         var dStep = (AngleTo - AngleFrom) / (ValueTo - ValueFrom).toFloat();
 
-        var rlf = AngleFrom + (dStep * RedlineFrom);
-        var rlt = AngleFrom + (dStep * RedlineTo);
-        dc.drawArc(Center.X, Center.Y, rr, d, 90 - rlf, 90 - rlt);
+        if (RedlineColor > -1) {
+            var rlf = AngleFrom + (dStep * RedlineFrom);
+            var rlt = AngleFrom + (dStep * RedlineTo);
+            dc.drawArc(Center.X, Center.Y, rr, d, 90 - rlf, 90 - rlt);
+        }
 
         if (BorderWidth > 0) {
             dc.setPenWidth(BorderWidth);
