@@ -24,7 +24,7 @@ Settings are available for the data field in the ConnectIQ app such as:
 - Odometer vertical position
 
 ## Footnote
-CarDash is available for free in the ConnectIQ store, and open source as you see.
+CarDash is available for free in the ConnectIQ store [here](https://apps.garmin.com/apps/ddd4a817-6509-4956-8ad4-6be6c52c9295), and open source as you see.
 
 If you want to support me you can do so [here](https://revolut.me/mihlywer)
 
