@@ -96,7 +96,7 @@ class CarDashView extends WatchUi.DataField {
         _rpmGauge.RedlineFrom = Application.Properties.getValue("cadRedline");
         _rpmGauge.RedlineTo = 100;
 
-        _rpmGauge.TickUnits = 20;
+        _rpmGauge.TickUnits = Application.Properties.getValue("cadDiv");
         _rpmGauge.Font = -1;
         _rpmGauge.ForegroundColor = th.FgColor;
         _rpmGauge.RedlineColor = Application.Properties.getValue("redlineColor").toNumber();

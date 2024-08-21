@@ -1,14 +1,14 @@
 # CarDash
 ![screenshot](https://github.com/rOzzy1987/CarDash/blob/main/resources/drawables/shot.png?raw=true)
 
-A simple cycling data field for Garmin ConnectIQ compatible devices
+A simple cycling analog data field for Garmin ConnectIQ compatible devices
 
 ## Introduction
-CarDash is a full screen data field (as the name suggests) resembling a car dashboard for cycling.
+CarDash is a full screen analog data field (as the name suggests) resembling a car dashboard for cycling.
 
 The main data fields displayed are
 - Current speed (large gauge)
-- Current cadence (small gauge)
+- Current cadence or heart rate (small gauge)
 - Total distance (odometer)
 
 ## Features
@@ -18,9 +18,10 @@ Settings are available for the data field in the ConnectIQ app such as:
 - "Redline" color
 - Gauge needle colors
 - Light or dark theme
-- Speedometer label font size
-- Odometer font size
-- Odometer vertical position, character width and character height
+- Speedometer label font
+- Speedometer and cadence/HR gauge tick frequency
+- Odometer font
+- Odometer vertical position
 
 ## Footnote
 CarDash is available for free in the ConnectIQ store, and open source as you see.

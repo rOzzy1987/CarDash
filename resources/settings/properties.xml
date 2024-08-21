@@ -11,6 +11,7 @@
         <property id="spdRedline" type="number">28</property>
         <property id="cadData" type="number">0</property>
         <property id="cadMax" type="number">100</property>
+        <property id="cadDiv" type="number">25</property>
         <property id="cadRedline" type="number">80</property>
         <property id="pointerColor" type="number">0xFF0000</property>
         <property id="pointerCapColor" type="number">0x555555</property>
@@ -29,6 +30,7 @@
         <string id="spdRedline">Speed redline</string>
         <string id="cadData">Small gauge data</string>
         <string id="cadMax">Small gauge MAX</string>
+        <string id="cadDiv">Small gauge divisions</string>
         <string id="cadRedline">Small gauge redline</string>
         <string id="spdMaxError">Value must be between 0 and 80</string>
         <string id="spdRedlineError">Value must be between 0 and 80</string>
@@ -54,19 +56,22 @@
         <string id="none">None</string>
 
         <string id="themeLight">Light</string>
-        <string id="themeDark">Dark</string>
+        <string id="themeDark" >Dark</string>
 
         <string id="fontXS">XS</string>
-        <string id="fontS">S</string>
-        <string id="fontM">M</string>
-        <string id="fontL">L</string>
+        <string id="fontS" >S</string>
+        <string id="fontM" >M</string>
+        <string id="fontL" >L</string>
         <string id="fontXL">XL</string>
         
         <string id="cadHr">Heart rate</string>
         <string id="cadCad">Cadence</string>
 
-        <string id="div5">5</string>
+        <string id="div5" >5</string>
         <string id="div10">10</string>
+        <string id="div20">20</string>
+        <string id="div25">25</string>
+        <string id="div50">50</string>
     </strings>
     <settings>
         <setting propertyKey="@Properties.theme" title="@Strings.theme">
@@ -169,6 +174,16 @@
         </setting>
         <setting propertyKey="@Properties.cadMax" title="@Strings.cadMax">
             <settingConfig type="numeric" min="0" max="250" errorMessage="@Strings.cadMaxError"/>
+        </setting>
+        
+        <setting propertyKey="@Properties.cadDiv" title="@Strings.cadDiv">
+            <settingConfig type="list">
+                <listEntry value="5" >@Strings.div5</listEntry>
+                <listEntry value="10">@Strings.div10</listEntry>
+                <listEntry value="20">@Strings.div20</listEntry>
+                <listEntry value="25">@Strings.div25</listEntry>
+                <listEntry value="50">@Strings.div50</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.cadRedline" title="@Strings.cadRedline">
             <settingConfig type="numeric" min="0" max="250" errorMessage="@Strings.cadRedlineError"/>
