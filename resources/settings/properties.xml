@@ -9,9 +9,9 @@
         <property id="odoP" type="number">41</property>
         <property id="spdMax" type="number">43</property>
         <property id="spdRedline" type="number">28</property>
-        <property id="cadData" type="number">0</property>
+        <property id="cadData" type="number">1</property>
         <property id="cadMax" type="number">100</property>
-        <property id="cadDiv" type="number">25</property>
+        <property id="cadDiv" type="number">20</property>
         <property id="cadRedline" type="number">80</property>
         <property id="pointerColor" type="number">0xFF0000</property>
         <property id="pointerCapColor" type="number">0x555555</property>

@@ -42,35 +42,6 @@ class Gauge {
 
     }
 
-    // public function init(x) as Void {
-    //     initProp(x, "Center");
-    //     initProp(x, "Size");
-    //     initProp(x, "Margin");
-    //     initProp(x, "ForegroundColor");
-    //     initProp(x, "RedlineColor");
-    //     initProp(x, "AngleFrom");
-    //     initProp(x, "AngleTo");
-    //     initProp(x, "ValueFrom");
-    //     initProp(x, "ValueTo");
-    //     initProp(x, "RedlineFrom");
-    //     initProp(x, "RedlineTo");
-    //     initProp(x, "TickUnits");
-    //     initProp(x, "SmallTickUnits");
-    //     initProp(x, "TickWidth");
-    //     initProp(x, "TickLength");
-    //     initProp(x, "SmallTickWidth");
-    //     initProp(x, "SmallTickLength");
-    //     initProp(x, "RedlineWidth");
-    //     initProp(x, "BorderWidth");
-    //     initProp(x, "Font");
-    //     initProp(x, "FontMargin");
-    // }
-    // public function initProp(x, prop as Lang.String) {
-    //     if(x has prop) {
-    //         self[prop] = x[prop];
-    //     }
-    // }
-
     public function draw(dc as Dc) {
         var r = (Size / 2) - Margin;
         var rr = r - RedlineWidth / 2;

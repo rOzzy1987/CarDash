@@ -94,7 +94,7 @@ class CarDashView extends WatchUi.DataField {
         _rpmGauge.AngleFrom = 240;
         _rpmGauge.AngleTo = 120;
         _rpmGauge.RedlineFrom = Application.Properties.getValue("cadRedline");
-        _rpmGauge.RedlineTo = 100;
+        _rpmGauge.RedlineTo = _rpmGauge.ValueTo;
 
         _rpmGauge.TickUnits = Application.Properties.getValue("cadDiv");
         _rpmGauge.Font = -1;
@@ -136,8 +136,8 @@ class CarDashView extends WatchUi.DataField {
                 }
                 break;
             case DATA_SRC_HEART_RATE:
-                if(info has :heartRate && info.heartRate != null) {
-                    _dSecondary = (info.heartRate).toFloat();
+                if(info has :currentHeartRate && info.currentHeartRate != null) {
+                    _dSecondary = (info.currentHeartRate).toFloat();
                 } else {
                     _dSecondary = 0.0f;
                 }
