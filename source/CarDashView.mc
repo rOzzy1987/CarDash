@@ -26,6 +26,12 @@ class CarDashView extends WatchUi.DataField {
 
     private var _isDebug = false;
 
+    private var _productName = "";
+    private var _productFont = Graphics.FONT_SYSTEM_XTINY;
+    private var _unitText = "";
+    private var _unitFont = Graphics.FONT_SYSTEM_TINY;
+    private var _lblPos as Numeric = 16;
+
     function initialize() {
         DataField.initialize();
 
@@ -64,7 +70,7 @@ class CarDashView extends WatchUi.DataField {
         _spdGauge.BorderWidth = 0;
         _spdGauge.CapSize = 30 * _scale;
         _spdGauge.TickUnits = Application.Properties.getValue("spdDiv").toNumber();
-        _spdGauge.SmallTickUnits = _spdGauge.TickUnits / 5;
+        _spdGauge.SmallTickUnits = _spdGauge.TickUnits / Application.Properties.getValue("spdSDiv").toNumber();
 
         _spdGauge.ValueFrom = 0f;
         _spdGauge.ValueTo = Application.Properties.getValue("spdMax").toFloat();
@@ -112,6 +118,20 @@ class CarDashView extends WatchUi.DataField {
         
         _isDebug = Application.Properties.getValue("isDebug");
         _secondaryDataSource = Application.Properties.getValue("cadData");
+
+        _productName = Application.Properties.getValue("productName");
+        _productFont = Application.Properties.getValue("prodFont");
+        _unitFont = Application.Properties.getValue("unitFont");
+        _lblPos = Application.Properties.getValue("lblP");
+
+        _unitText = System.getDeviceSettings().distanceUnits == System.UNIT_METRIC
+            ? WatchUi.loadResource(Rez.Strings.Kph)
+            : WatchUi.loadResource(Rez.Strings.Mph);
+
+        if (_productName.equals("")) {
+            _productName = WatchUi.loadResource(Rez.Strings.ProductName);
+            Application.Properties.setValue("productName", _productName);
+        }
     }
 
     function compute(info as Activity.Info) as Void {
@@ -165,17 +185,10 @@ class CarDashView extends WatchUi.DataField {
         dc.setColor(Graphics.COLOR_TRANSPARENT, th.BgColor);
         dc.clear();
 
-
-        if (_spdGauge.Font != -1) {
-            var utxt = System.getDeviceSettings().distanceUnits == System.UNIT_METRIC
-                ? WatchUi.loadResource(Rez.Strings.Kph)
-                : WatchUi.loadResource(Rez.Strings.Mph);
-            dc.setColor(0x808080, -1);
-            dc.drawText(_w / 2, _h / 4, Graphics.FONT_SYSTEM_XTINY, utxt, Graphics.TEXT_JUSTIFY_CENTER);
-        }
-
         _spdGauge.draw(dc);
         _rpmGauge.draw(dc);
+
+        drawLabels(dc);
 
         _odometer.draw(dc, _dDistance);
 
@@ -187,6 +200,24 @@ class CarDashView extends WatchUi.DataField {
         }
     }
 
+    function drawLabels(dc as Dc){
+        if (_unitFont == -1 && _productFont == -1) {
+            return;
+        }
+
+        var p = _h * _lblPos / 64;
+        dc.setColor(0x808080, -1);
+
+        if (_unitFont != -1) {
+            dc.drawText(_w / 2, p, _unitFont, _unitText, Graphics.TEXT_JUSTIFY_CENTER);
+            var fh = dc.getTextDimensions("0", _unitFont);
+            p+= fh[1];
+        }
+        if (_productFont != -1) {
+            dc.drawText(_w / 2, p, _productFont, _productName, Graphics.TEXT_JUSTIFY_CENTER);
+        }
+    }
+
     function dbgView(dc as Dc){
         dc.setColor(Graphics.COLOR_GREEN, -1);
         dc.drawText(90, 60, Graphics.FONT_SYSTEM_XTINY, _dSpeed.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
@@ -194,6 +225,7 @@ class CarDashView extends WatchUi.DataField {
         dc.drawText(90, 90, Graphics.FONT_SYSTEM_XTINY, _dSecondary.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(90, 105, Graphics.FONT_SYSTEM_XTINY, _secondaryDataSource == DATA_SRC_CADENCE ? "Cad" : "HR", Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(90, 120, Graphics.FONT_SYSTEM_XTINY, System.getDeviceSettings().partNumber, Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(90, 135, Graphics.FONT_SYSTEM_XTINY, WatchUi.loadResource(Rez.Strings.ProductName), Graphics.TEXT_JUSTIFY_LEFT);
     }
 
 }

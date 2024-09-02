@@ -4,3 +4,5 @@ internal-mir
 mir
 out
 .vscode
+resources-*/strings.xml
+**/*.orig

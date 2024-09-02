@@ -1,0 +1,138 @@
+approachs60|Approach S60
+approachs62|Approach S62
+approachs7042mm|Approach S70
+approachs7047mm|Approach S70
+d2air|D2 Air
+d2airx10|D2 Air X10
+d2bravo|D2 Bravo
+d2bravo_titanium|D2 Bravo
+d2charlie|D2 Charlie
+d2delta|D2 Delta
+d2deltapx|D2 Delta PX
+d2deltas|D2 Delta S
+d2mach1|D2 Mach 1
+descentg1|Descent G1
+descentmk1|Descent Mk1
+descentmk2|Descent Mk2
+descentmk2s|Descent Mk2S
+descentmk343mm|Descent Mk3
+descentmk351mm|Descent Mk3
+edge1030|Edge 1030
+edge1030bontrager|Edge 1030
+edge1030plus|Edge 1030 Plus
+edge1040|Edge 1040
+edge1050|Edge 1050
+edge130|Edge 130
+edge130plus|Edge 130 Plus
+edge520plus|Edge 520 Plus
+edge530|Edge 530
+edge540|Edge 540
+edge820|Edge 820
+edge830|Edge 830
+edge840|Edge 840
+edge_1000|Edge 1000
+edge_520|Edge 520
+edgeexplore|Edge Explore
+edgeexplore2|Edge Explore 2
+enduro|Enduro
+enduro3|Enduro 3
+epix|epix
+epix2|epix 2
+epix2pro42mm|epix 2 Pro
+epix2pro47mm|epix 2 Pro
+epix2pro51mm|epix 2 Pro
+fenix3|fēnix 3
+fenix3_hr|fēnix 3 HR 
+fenix5|fēnix 5
+fenix5plus|fēnix 5 Plus
+fenix5s|fēnix 5S
+fenix5splus|fēnix 5S Plus
+fenix5x|fēnix 5X
+fenix5xplus|fēnix 5X Plus
+fenix6|fēnix 6
+fenix6pro|fēnix 6 Pro
+fenix6s|fēnix 6S
+fenix6spro|fēnix 6S Pro
+fenix6xpro|fēnix 6X Pro
+fenix7|fēnix 7
+fenix7pro|fēnix 7 Pro
+fenix7pronowifi|fēnix 7 Pro
+fenix7s|fēnix 7S
+fenix7spro|fēnix 7S Pro
+fenix7x|fēnix 7X
+fenix7xpro|fēnix 7X Pro
+fenix7xpronowifi|fēnix 7X Pro
+fenix843mm|fēnix 8
+fenix847mm|fēnix 8
+fenix8solar47mm|fēnix 8
+fenix8solar51mm|fēnix 8
+fenixchronos|fēnix Chronos
+fenixe|fēnix E
+fr165|Forerunner 165
+fr165m|Forerunner 165
+fr230|Forerunner 230
+fr235|Forerunner 235
+fr245|Forerunner 245
+fr245m|Forerunner 245
+fr255|Forerunner 255 
+fr255m|Forerunner 255
+fr255s|Forerunner 255s
+fr255sm|Forerunner 255s
+fr265|Forerunner 265
+fr265s|Forerunner 265s
+fr55|Forerunner 55
+fr630|Forerunner 630
+fr645|Forerunner 645
+fr645m|Forerunner 645
+fr735xt|Forerunner 735 XT
+fr745|Forerunner 745
+fr920xt|Forerunner 920 XT
+fr935|Forerunner 935
+fr945|Forerunner 945
+fr945lte|Forerunner 945 LTE
+fr955|Forerunner 955
+fr965|Forerunner 965
+gpsmap66|GPSMAP 66
+gpsmap67|GPSMAP 67
+gpsmap86|GPSMAP 86
+instinct2|Instinct 2
+instinct2s|Instinct 2S
+instinct2x|Instinct 2X
+instinctcrossover|Instinct Crossover
+legacyherocaptainmarvel|Captain Marvel
+legacyherofirstavenger|First Avenger
+legacysagadarthvader|Darth Vader
+legacysagarey|Rey
+marq2|MARQ 2
+marq2aviator|MARQ 2
+marqadventurer|MARQ Adventurer
+marqathlete|MARQ Athlete
+marqaviator|MARQ Aviator
+marqcaptain|MARQ Captain
+marqcommander|MARQ Commander
+marqdriver|MARQ Driver
+marqexpedition|MARQ Expedition
+marqgolfer|MARQ Golfer
+montana7xx|Montana 7 Series
+oregon7xx|Oregon 7 Series
+rino7xx|Rino 7 Series
+venu|Venu
+venu2|Venu 2
+venu2plus|Venu 2 Plus
+venu2s|Venu 2S
+venu3|Venu 3
+venu3s|Venu 3S
+venud|Venu MB
+venusq|Venu Sq
+venusq2|Venu Sq 2
+venusq2m|Venu Sq 2
+venusqm|Venu Sq
+vivoactive|vívoactive
+vivoactive3|vívoactive 3
+vivoactive3d|vívoactive 3 MB
+vivoactive3m|vívoactive 3
+vivoactive3mlte|vívoactive 3
+vivoactive4|vívoactive 4
+vivoactive4s|vívoactive 4S
+vivoactive5|vívoactive 5
+vivoactive_hr|vívoactive HR

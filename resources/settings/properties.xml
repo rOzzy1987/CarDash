@@ -5,6 +5,7 @@
         <property id="redlineColor" type="number">0xFF0000</property>
         <property id="spdFont" type="number">11</property>
         <property id="spdDiv" type="number">5</property>
+        <property id="spdSDiv" type="number">5</property>
         <property id="odoFont" type="number">10</property>
         <property id="odoP" type="number">41</property>
         <property id="spdMax" type="number">43</property>
@@ -15,6 +16,10 @@
         <property id="cadRedline" type="number">80</property>
         <property id="pointerColor" type="number">0xFF0000</property>
         <property id="pointerCapColor" type="number">0x555555</property>
+        <property id="productName" type="string"></property>
+        <property id="lblP" type="number">16</property>
+        <property id="unitFont" type="number">10</property>
+        <property id="prodFont" type="number">9</property>
         <property id="isDebug" type="boolean">false</property>
     </properties>
      <strings>
@@ -23,6 +28,7 @@
         <string id="pointerCapColor">Needle cap color</string>
         <string id="spdFont">Speedometer font</string>
         <string id="spdDiv">Speedometer divisions</string>
+        <string id="spdSDiv">Speedometer subdivisions</string>
         <string id="odoFont">Odometer font</string>
         <string id="odoP">Odometer position</string>
         <string id="theme">Theme</string>
@@ -37,7 +43,12 @@
         <string id="cadMaxError">Value must be between 0 and 250</string>
         <string id="cadRedlineError">Value must be between 0 and 250</string>
         <string id="odoPError">Value must be between 0 and 64</string>
+        <string id="lblPError">Value must be between 0 and 64</string>
         <string id="isDebug">Debug mode</string>
+        <string id="lblP">Label position</string>
+        <string id="unitFont">Unit font</string>
+        <string id="prodFont">Product name font</string>
+        <string id="productNameLbl">Product name</string>
         
         <string id="white">White</string>
         <string id="ltGray">Light gray</string>
@@ -155,6 +166,12 @@
                 <listEntry value="50">@Strings.div50</listEntry>
             </settingConfig>
         </setting>
+        <setting propertyKey="@Properties.spdSDiv" title="@Strings.spdSDiv">
+            <settingConfig type="list">
+                <listEntry value="5" >@Strings.div5</listEntry>
+                <listEntry value="10">@Strings.div10</listEntry>
+            </settingConfig>
+        </setting>
         <setting propertyKey="@Properties.odoFont" title="@Strings.odoFont">
             <settingConfig type="list">
                 <listEntry value="9" >@Strings.fontXS</listEntry>
@@ -193,6 +210,32 @@
         </setting>
         <setting propertyKey="@Properties.odoP" title="@Strings.odoP">
             <settingConfig type="numeric" min="0" max="64" errorMessage="@Strings.odoPError"/>
+        </setting>
+
+
+        <setting propertyKey="@Properties.unitFont" title="@Strings.unitFont">
+            <settingConfig type="list">
+                <listEntry value="9" >@Strings.fontXS</listEntry>
+                <listEntry value="10">@Strings.fontS</listEntry>
+                <listEntry value="11">@Strings.fontM</listEntry>
+                <listEntry value="12">@Strings.fontL</listEntry>
+                <listEntry value="13">@Strings.fontXL</listEntry>
+                <listEntry value="-1">@Strings.none</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.prodFont" title="@Strings.prodFont">
+            <settingConfig type="list">
+                <listEntry value="9" >@Strings.fontXS</listEntry>
+                <listEntry value="10">@Strings.fontS</listEntry>
+                <listEntry value="11">@Strings.fontM</listEntry>
+                <listEntry value="-1">@Strings.none</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.lblP" title="@Strings.lblP">
+            <settingConfig type="numeric" min="0" max="64" errorMessage="@Strings.lblPError"/>
+        </setting>
+        <setting propertyKey="@Properties.productName" title="@Strings.productNameLbl">
+            <settingConfig type="alphaNumeric" />
         </setting>
         
         <setting propertyKey="@Properties.isDebug" title="@Strings.isDebug">

@@ -2,4 +2,5 @@
     <string id="AppName">CarDash</string>
     <string id="Kph">km/h</string>
     <string id="Mph">mph</string>
+    <string id="ProductName">Garmin</string>
 </strings>
