@@ -18,6 +18,7 @@ class CarDashView extends WatchUi.DataField {
     // View related
     private var _w = 0;
     private var _h = 0;
+    private var _scale = 1f;
 
     private var _spdGauge = new Gauge();
     private var _rpmGauge = new Gauge();
@@ -50,18 +51,18 @@ class CarDashView extends WatchUi.DataField {
         Theme.setTheme(Application.Properties.getValue("theme"));
         var th = Theme.getTheme();
     
-        var scale = _w / 240.0f;
+        _scale = _w / 240.0f;
 
         _spdGauge.Size = _w;
         _spdGauge.Center = new Point(_w/2, _h/2);
-        _spdGauge.Margin = th.Margin * scale;
-        _spdGauge.TickWidth = th.TickWidth * scale;
-        _spdGauge.SmallTickWidth = th.SubtickWidth * scale;
-        _spdGauge.TickLength = th.TickLength * scale;
-        _spdGauge.SmallTickLength = th.SubtickLength * scale;
-        _spdGauge.RedlineWidth = th.RlWidth * scale;
+        _spdGauge.Margin = th.Margin * _scale;
+        _spdGauge.TickWidth = th.TickWidth * _scale;
+        _spdGauge.SmallTickWidth = th.SubtickWidth * _scale;
+        _spdGauge.TickLength = th.TickLength * _scale;
+        _spdGauge.SmallTickLength = th.SubtickLength * _scale;
+        _spdGauge.RedlineWidth = th.RlWidth * _scale;
         _spdGauge.BorderWidth = 0;
-        _spdGauge.CapSize = 30 * scale;
+        _spdGauge.CapSize = 30 * _scale;
         _spdGauge.TickUnits = Application.Properties.getValue("spdDiv").toNumber();
         _spdGauge.SmallTickUnits = _spdGauge.TickUnits / 5;
 
@@ -73,7 +74,7 @@ class CarDashView extends WatchUi.DataField {
         _spdGauge.RedlineTo = _spdGauge.ValueTo;
 
         _spdGauge.Font = Application.Properties.getValue("spdFont");
-        _spdGauge.FontMargin = 15 * scale;
+        _spdGauge.FontMargin = 15 * _scale;
         _spdGauge.ForegroundColor = th.FgColor;
         _spdGauge.RedlineColor = Application.Properties.getValue("redlineColor").toNumber();
         _spdGauge.PointerColor = Application.Properties.getValue("pointerColor").toNumber();
@@ -81,14 +82,14 @@ class CarDashView extends WatchUi.DataField {
 
         _rpmGauge.Size = _w / 2;
         _rpmGauge.Center = new Point(_w/2, _h * 3/4);
-        _rpmGauge.Margin = th.Margin * scale;
-        _rpmGauge.TickWidth = th.RpmTickWidth * scale;
+        _rpmGauge.Margin = th.Margin * _scale;
+        _rpmGauge.TickWidth = th.RpmTickWidth * _scale;
         _rpmGauge.SmallTickWidth = 0;
-        _rpmGauge.TickLength = th.RpmTickLength * scale;
+        _rpmGauge.TickLength = th.RpmTickLength * _scale;
         _rpmGauge.SmallTickLength = 0;
-        _rpmGauge.RedlineWidth = th.RpmRlWidth * scale;
+        _rpmGauge.RedlineWidth = th.RpmRlWidth * _scale;
         _rpmGauge.BorderWidth = 1;
-        _rpmGauge.CapSize = 12 * scale;
+        _rpmGauge.CapSize = 12 * _scale;
 
         _rpmGauge.ValueTo = Application.Properties.getValue("cadMax");
         _rpmGauge.AngleFrom = 240;
@@ -103,7 +104,7 @@ class CarDashView extends WatchUi.DataField {
         _rpmGauge.PointerColor = Application.Properties.getValue("pointerColor").toNumber();
         _rpmGauge.CapColor = Application.Properties.getValue("pointerCapColor").toNumber();
 
-        _odometer.BorderWidth = 2 * scale;
+        _odometer.BorderWidth = 2 * _scale;
         _odometer.Font = Application.Properties.getValue("odoFont");
         _odometer.Center = new Point(_w / 2, _h * Application.Properties.getValue("odoP").toNumber() / 64);
         _odometer.CharacterWidth = 0;
@@ -170,7 +171,7 @@ class CarDashView extends WatchUi.DataField {
                 ? WatchUi.loadResource(Rez.Strings.Kph)
                 : WatchUi.loadResource(Rez.Strings.Mph);
             dc.setColor(0x808080, -1);
-            dc.drawText(_w / 2, _h / 4, Graphics.FONT_SYSTEM_XTINY, utxt, Graphics.TEXT_JUSTIFY_CENTER) ;
+            dc.drawText(_w / 2, _h / 4, Graphics.FONT_SYSTEM_XTINY, utxt, Graphics.TEXT_JUSTIFY_CENTER);
         }
 
         _spdGauge.draw(dc);
@@ -192,6 +193,7 @@ class CarDashView extends WatchUi.DataField {
         dc.drawText(90, 75, Graphics.FONT_SYSTEM_XTINY, _dDistance.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(90, 90, Graphics.FONT_SYSTEM_XTINY, _dSecondary.format("%.2f"), Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(90, 105, Graphics.FONT_SYSTEM_XTINY, _secondaryDataSource == DATA_SRC_CADENCE ? "Cad" : "HR", Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(90, 120, Graphics.FONT_SYSTEM_XTINY, System.getDeviceSettings().partNumber, Graphics.TEXT_JUSTIFY_LEFT);
     }
 
 }

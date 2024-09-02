@@ -150,6 +150,9 @@
             <settingConfig type="list">
                 <listEntry value="5" >@Strings.div5</listEntry>
                 <listEntry value="10">@Strings.div10</listEntry>
+                <listEntry value="20">@Strings.div20</listEntry>
+                <listEntry value="25">@Strings.div25</listEntry>
+                <listEntry value="50">@Strings.div50</listEntry>
             </settingConfig>
         </setting>
         <setting propertyKey="@Properties.odoFont" title="@Strings.odoFont">
