@@ -70,7 +70,8 @@ class CarDashView extends WatchUi.DataField {
         _spdGauge.BorderWidth = 0;
         _spdGauge.CapSize = 30 * _scale;
         _spdGauge.TickUnits = Application.Properties.getValue("spdDiv").toNumber();
-        _spdGauge.SmallTickUnits = _spdGauge.TickUnits / Application.Properties.getValue("spdSDiv").toNumber();
+        var sdiv = _spdGauge.TickUnits / Application.Properties.getValue("spdSDiv").toNumber();
+        _spdGauge.SmallTickUnits = sdiv < 1 ? 1 : sdiv;
 
         _spdGauge.ValueFrom = 0f;
         _spdGauge.ValueTo = Application.Properties.getValue("spdMax").toFloat();
