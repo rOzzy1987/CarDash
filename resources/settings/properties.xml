@@ -32,8 +32,8 @@
         <string id="cadMax">Small gauge MAX</string>
         <string id="cadDiv">Small gauge divisions</string>
         <string id="cadRedline">Small gauge redline</string>
-        <string id="spdMaxError">Value must be between 0 and 80</string>
-        <string id="spdRedlineError">Value must be between 0 and 80</string>
+        <string id="spdMaxError">Value must be between 0 and 150</string>
+        <string id="spdRedlineError">Value must be between 0 and 150</string>
         <string id="cadMaxError">Value must be between 0 and 250</string>
         <string id="cadRedlineError">Value must be between 0 and 250</string>
         <string id="odoPError">Value must be between 0 and 64</string>
@@ -164,10 +164,10 @@
         </setting>
 
         <setting propertyKey="@Properties.spdMax" title="@Strings.spdMax">
-            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.spdMaxError"/>
+            <settingConfig type="numeric" min="0" max="150" errorMessage="@Strings.spdMaxError"/>
         </setting>
         <setting propertyKey="@Properties.spdRedline" title="@Strings.spdRedline">
-            <settingConfig type="numeric" min="0" max="80" errorMessage="@Strings.spdRedlineError"/>
+            <settingConfig type="numeric" min="0" max="150" errorMessage="@Strings.spdRedlineError"/>
         </setting>
         <setting propertyKey="@Properties.cadData" title="@Strings.cadData">
             <settingConfig type="list">
